@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const runtime = "edge";
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {

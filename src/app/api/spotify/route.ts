@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getArtistTopTracks } from "@/lib/spotify";
 import { SPOTIFY_ARTIST_ID, FALLBACK_TRACKS } from "@/lib/constants";
 
+export const runtime = "edge";
+
 export async function GET() {
   try {
     const tracks = await getArtistTopTracks(SPOTIFY_ARTIST_ID);
