@@ -21,7 +21,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
 
   return (
     <ScrollReveal delay={index * 0.1}>
-      <div className="group flex flex-col overflow-hidden rounded-2xl border border-brown-deep/5 bg-white transition-shadow duration-300 hover:shadow-md">
+      <div className="group flex flex-col overflow-hidden rounded-2xl border border-cream/[0.08] bg-surface-light transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(212,160,23,0.08)]">
         {/* Product image */}
         <div className="relative aspect-square overflow-hidden">
           {firstImage ? (
@@ -33,8 +33,8 @@ export default function ProductCard({ product, index }: ProductCardProps) {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-cream">
-              <span className="font-heading text-xl text-brown-body/30">
+            <div className="flex h-full w-full items-center justify-center bg-brown-rich">
+              <span className="font-heading text-xl text-cream/30">
                 {product.title}
               </span>
             </div>
@@ -43,12 +43,12 @@ export default function ProductCard({ product, index }: ProductCardProps) {
 
         {/* Card body */}
         <div className="flex flex-1 flex-col gap-2 px-5 py-4">
-          <h3 className="font-heading text-base text-brown-deep leading-tight">
+          <h3 className="font-heading text-base text-cream leading-tight">
             {product.title}
           </h3>
 
           {firstVariant && (
-            <p className="text-sm font-medium text-brown-body">
+            <p className="text-sm font-medium text-cream/70">
               {formatPrice(
                 firstVariant.price.amount,
                 firstVariant.price.currencyCode

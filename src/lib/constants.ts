@@ -24,11 +24,10 @@ export const SOCIAL_LINKS = {
 
 // Navigation items
 export const NAV_ITEMS = [
-  { label: "Tour", href: "#tour" },
-  { label: "Music", href: "#music" },
-  { label: "Videos", href: "#videos" },
   { label: "Merch", href: "#merch" },
-  { label: "Stay Updated", href: "#signup" },
+  { label: "Music", href: "#music" },
+  { label: "Tour", href: "#tour" },
+  { label: "Videos", href: "#videos" },
 ] as const;
 
 // Tour section visibility flag

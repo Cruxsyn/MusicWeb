@@ -96,15 +96,15 @@ export default function Footer() {
         <div className="section-divider mx-auto" />
 
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          {/* TB Monogram */}
+          {/* Logo */}
           <div className="flex justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/tb-monogram-transparent.png"
-              alt="TB"
-              width={48}
+              src="/images/tate-butts-official-logo.png"
+              alt="Tate Butts"
+              width={140}
               height={48}
-              className="filter-gold h-12 w-12 object-contain"
+              className="filter-gold h-10 w-auto object-contain"
             />
           </div>
 

@@ -7,14 +7,17 @@
   --color-amber: #E8A020;
   --color-cream: #FFFDF5;
   --color-warm-white: #FFF8F0;
-  --color-brown-deep: #111111;
-  --color-brown-body: #555555;
-  --color-brown-rich: #1A1A1A;
-  --color-brown-dark: #0A0A0A;
+  --color-brown-deep: #090909;
+  --color-brown-body: #999999;
+  --color-brown-rich: #111111;
+  --color-brown-dark: #050505;
   --color-burgundy: #6B1E2E;
+  --color-surface: #161616;
+  --color-surface-light: #1C1C1C;
 
-  --font-heading: "DM Serif Display", Georgia, serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Permanent Marker", cursive;
 }
 
 /* Base styles */
@@ -23,8 +26,8 @@ html {
 }
 
 body {
-  background-color: #FFFDF5;
-  color: #1A1A1A;
+  background-color: #0D0D0D;
+  color: #E5E5E5;
   font-family: var(--font-body);
   overflow-x: hidden;
 }
@@ -35,7 +38,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FFFDF5;
+  background: #0D0D0D;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -50,7 +53,7 @@ body {
 /* Selection color */
 ::selection {
   background-color: rgba(212, 160, 23, 0.3);
-  color: #1A1A1A;
+  color: #FFFDF5;
 }
 
 /* Noise texture overlay for hero */

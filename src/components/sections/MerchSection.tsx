@@ -9,17 +9,17 @@ export default function MerchSection() {
   const { products } = useShopify();
 
   return (
-    <section id="merch" className="bg-warm-white py-20 md:py-28">
+    <section id="merch" className="bg-surface py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading title="Merch" />
+        <SectionHeading title="Merch" light />
 
         {products.length === 0 ? (
           <ScrollReveal>
             <div className="mx-auto max-w-sm text-center">
-              <p className="font-heading text-xl text-brown-deep">
+              <p className="font-heading text-xl text-cream">
                 Coming Soon
               </p>
-              <p className="mt-2 text-sm text-brown-body/50">
+              <p className="mt-2 text-sm text-cream/50">
                 Official merchandise is on the way.
               </p>
             </div>

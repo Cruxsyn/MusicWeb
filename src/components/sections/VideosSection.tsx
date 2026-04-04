@@ -10,10 +10,10 @@ export default function VideosSection() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
-    <section className="bg-brown-rich py-16 md:py-20">
+    <section id="videos" className="bg-brown-rich py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="up">
-          <div className="scrollbar-none flex justify-center gap-4 overflow-x-auto md:gap-5">
+          <div className="scrollbar-none flex gap-4 overflow-x-auto md:justify-center md:gap-5">
             {VIDEO_IDS.map((video, i) => (
               <motion.div
                 key={video.id}

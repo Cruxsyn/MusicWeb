@@ -13,40 +13,40 @@ export default function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  // Only background text moves on scroll — photo stays fixed
   const bgTextY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen overflow-hidden bg-cream"
+      className="relative min-h-screen overflow-hidden bg-brown-deep"
     >
-      {/* Background: warm radial gradient */}
+      {/* Background: dark radial gradient with gold hint */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 40%, rgba(212, 160, 23, 0.12) 0%, rgba(240, 215, 140, 0.08) 30%, rgba(255, 253, 245, 1) 70%)",
+            "radial-gradient(ellipse at 50% 40%, rgba(212, 160, 23, 0.08) 0%, rgba(212, 160, 23, 0.03) 30%, rgba(9, 9, 9, 1) 70%)",
         }}
       />
 
       {/* Noise overlay */}
       <div className="noise-overlay" />
 
-      {/* Stroke text layer — always full opacity, z-15 */}
+      {/* ── Desktop: overlapping text behind photo (md+) ── */}
+      {/* Stroke text layer */}
       <motion.div
-        className="pointer-events-none absolute inset-0 z-[15] flex items-center justify-center"
+        className="pointer-events-none absolute inset-0 z-[15] hidden items-center justify-center md:flex"
         style={{ y: bgTextY }}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
       >
         <h1
-          className="select-none whitespace-nowrap font-heading font-normal leading-[0.85] text-[5rem] sm:text-[8rem] md:text-[11rem] lg:text-[15rem] xl:text-[18rem]"
+          className="select-none whitespace-nowrap font-display leading-[0.85] text-[8rem] lg:text-[11rem] xl:text-[14rem]"
           style={{
             color: "transparent",
-            WebkitTextStroke: "2.5px rgba(212, 160, 23, 0.4)",
+            WebkitTextStroke: "2.5px rgba(212, 160, 23, 0.3)",
           }}
           aria-hidden="true"
         >
@@ -54,25 +54,68 @@ export default function HeroSection() {
         </h1>
       </motion.div>
 
-      {/* Filled text layer — always full opacity, z-15 */}
+      {/* Filled text layer */}
       <motion.div
-        className="pointer-events-none absolute inset-0 z-[15] flex items-center justify-center"
+        className="pointer-events-none absolute inset-0 z-[15] hidden items-center justify-center md:flex"
         style={{ y: bgTextY }}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
       >
         <span
-          className="text-gradient-gold select-none whitespace-nowrap font-heading font-normal leading-[0.85] text-[5rem] sm:text-[8rem] md:text-[11rem] lg:text-[15rem] xl:text-[18rem]"
+          className="select-none whitespace-nowrap font-display leading-[0.85] text-[8rem] lg:text-[11rem] xl:text-[14rem] text-gold"
           aria-hidden="true"
         >
           TATE BUTTS
         </span>
       </motion.div>
 
-      {/* Photo — pinned to top, no parallax */}
+      {/* ── Mobile: stacked layout (photo then text) ── */}
       <motion.div
-        className="relative z-20 mx-auto mt-16 md:mt-20 h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] w-full max-w-[600px] sm:max-w-[700px] md:max-w-[850px] lg:max-w-[950px]"
+        className="relative z-20 flex flex-col items-center pt-20 md:hidden"
+        style={{ opacity: contentOpacity }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        {/* Photo */}
+        <div className="relative w-[85vw] max-w-[400px] aspect-square">
+          {/* Bloom: blurred gold-tinted copy of the image behind */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/tate-hero-v3.png"
+            alt=""
+            aria-hidden="true"
+            className="absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] object-contain object-top blur-2xl opacity-60"
+            style={{
+              filter: "blur(40px) brightness(1.2) sepia(1) saturate(3) hue-rotate(-10deg)",
+            }}
+          />
+          <Image
+            src="/images/tate-hero-v3.png"
+            alt="Tate Butts"
+            fill
+            priority
+            quality={95}
+            className="relative object-contain object-top"
+            sizes="400px"
+          />
+        </div>
+
+        {/* Text below photo */}
+        <motion.h1
+          className="text-gradient-gold mt-4 font-display leading-[0.85] text-[4.5rem] sm:text-[6rem]"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          TATE BUTTS
+        </motion.h1>
+      </motion.div>
+
+      {/* ── Desktop: photo (md+) ── */}
+      <motion.div
+        className="relative z-20 mx-auto mt-20 hidden h-[calc(100vh-5rem)] w-full max-w-[850px] lg:max-w-[950px] md:block"
         style={{ opacity: contentOpacity }}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -82,26 +125,29 @@ export default function HeroSection() {
           ease: [0.25, 0.1, 0.25, 1],
         }}
       >
-        {/* Warm golden glow behind photo */}
-        <div
-          className="absolute -inset-4 rounded-full opacity-40 blur-3xl"
+        {/* Bloom: blurred gold-tinted copy of the image behind */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/tate-hero-v3.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-contain object-top opacity-50"
           style={{
-            background:
-              "radial-gradient(ellipse, rgba(212, 160, 23, 0.3), transparent 70%)",
+            filter: "blur(50px) brightness(1.2) sepia(1) saturate(3) hue-rotate(-10deg)",
           }}
         />
         <Image
-          src="/images/tate-hero.png"
+          src="/images/tate-hero-v3.png"
           alt="Tate Butts"
           fill
           priority
           quality={95}
           className="relative object-contain object-top"
-          sizes="(max-width: 640px) 600px, (max-width: 768px) 700px, (max-width: 1024px) 850px, 950px"
+          sizes="(max-width: 1024px) 850px, 950px"
         />
       </motion.div>
 
-      {/* CTA — Spotify listen button overlaid at the bottom */}
+      {/* CTA — Spotify listen button */}
       <motion.div
         className="absolute bottom-10 left-0 right-0 z-30 text-center"
         style={{ opacity: contentOpacity }}

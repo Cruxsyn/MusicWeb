@@ -3,7 +3,7 @@
 import { useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Music } from "lucide-react";
-import { NAV_ITEMS, SOCIAL_LINKS, SHOW_TOUR_SECTION } from "@/lib/constants";
+import { NAV_ITEMS, SOCIAL_LINKS } from "@/lib/constants";
 
 // Instagram icon (brand icons removed from lucide-react v1+)
 function InstagramIcon({ className }: { className?: string }) {
@@ -76,17 +76,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     };
   }, [isOpen]);
 
-  // Build nav items, conditionally inserting Tour link
   const navItems = useMemo(() => {
-    const items: NavItem[] = NAV_ITEMS.map((item) => ({
+    return NAV_ITEMS.map((item) => ({
       label: item.label,
       href: item.href,
     }));
-    if (SHOW_TOUR_SECTION) {
-      const videosIndex = items.findIndex((item) => item.label === "Videos");
-      items.splice(videosIndex + 1, 0, { label: "Tour", href: "#tour" });
-    }
-    return items;
   }, []);
 
   return (
