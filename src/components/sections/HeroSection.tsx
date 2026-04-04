@@ -104,7 +104,8 @@ export default function HeroSection() {
 
         {/* Text below photo */}
         <motion.h1
-          className="text-gradient-gold mt-4 font-display leading-[0.85] text-[4.5rem] sm:text-[6rem]"
+          className="text-gradient-gold mt-4 w-full whitespace-nowrap text-center font-display leading-[0.85]"
+          style={{ fontSize: "clamp(2rem, 12vw, 6rem)" }}
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
