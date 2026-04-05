@@ -81,11 +81,11 @@ export default function Header() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/tate-butts-official-logo.png"
+                src="/images/tb-monogram-transparent.png"
                 alt="Tate Butts"
-                width={160}
+                width={48}
                 height={48}
-                className={`h-12 w-auto object-contain transition-all duration-300 ${
+                className={`h-10 w-auto object-contain transition-all duration-300 ${
                   scrolled ? "filter-gold" : "filter-cream"
                 }`}
               />
